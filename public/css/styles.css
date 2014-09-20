@@ -1,0 +1,76 @@
+body
+{
+  font-family: Century Gothic, "Century Gothic", Apple Gothic;
+  min-width:683px;
+}
+#nav {
+  background: #446688;
+  color:white;
+  padding:20px;
+  margin-left:auto;
+  margin-right:auto;
+  position:fixed;
+  width:95%;
+  top:0px;
+  min-width:683px;
+}
+#nav a
+{
+  color:white;
+  padding: 20px 40px;
+  text-decoration: none;
+}
+
+#nav a:hover
+{
+  background: #224466;
+}
+iframe
+{
+  float:left;
+  padding:0 20px 20px 20px;
+}
+p
+{
+  padding: 0px 25px;
+}
+#middle 
+{
+  margin-top:80px;
+}
+#bottom 
+{
+  clear: both;
+  margin: 25px;
+  font-size:smaller;
+  text-align: center;
+}
+#news {clear:both;}
+#msg, #msg2
+{ 
+  float:left;
+    margin: 25px;
+    padding:25px;
+    width: 45%;
+    border: 1px solid grey; padding: 5px; overflow: auto; background:#fefefe;font-family:Lucida Grande; 
+}   
+	#msg a, #msg2 a {color:#3b5998; text-decoration: none}
+	#msg a:hover, #msg2 a:hover {text-decoration: underline}
+	#msg img {}
+	.date {color:#cecece; font-size:8pt; font-family: Verdana}
+table 
+{
+  padding: 0px 25px;
+  left:25px;
+}
+form
+{
+  padding:0 25px;
+  font-family: Helvetica;
+  font-size: smaller;
+}
+#tutor 
+{
+  padding:25px;
+  float: right;
+}

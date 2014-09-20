@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+        <link href="StyleSheets/styles.css" rel="stylesheet" type="text/css">
+        <style>
+            @charset "UTF-8";
+            /* CSS Document */
+
+            body
+            {
+                position:absolute;
+                background: transparent url(../images/bg01.jpg) no-repeat 50% 0%;
+                background-size: 1440px auto;
+                left: 50%; 
+                margin-left: -720px; 
+                width: 1440px;  
+                min-width: 600px;
+                background-color:#FFFFFF;
+            }
+
+            #bodyf
+            {
+                background-image:url(../images/bg02.jpg);
+                position:absolute;
+                background-size: 1440px auto;
+                left: 50%; 
+                margin-left: -720px; 
+                width: 1440px;
+                height:900px;
+                min-width: 600px;
+                opacity:0;
+                top: -7px;
+            }
+
+
+            #blok
+            {
+                display:none;
+                clear:both;
+                position: initial;
+                background: rgba(80, 80, 184, 0.75);
+                width: 70%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top:-18px;
+                height: 950px;
+                color:white;
+                font-family: 'Asap', sans-serif;
+            }
+
+            #title 
+            {
+                padding: 180px 0px 10px 80px; 
+                font-size:48pt;
+            }
+
+            #text 
+            {
+                padding: 0px 210px 0px 80px; 
+                font-size: 16pt;
+                line-height: 25pt;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            #img
+            {
+                padding-left: 40px;
+            }
+
+            .imag img
+            {
+                float:left; 
+                padding-left: 40px;
+                padding-top: 70px;
+            }
+
+            #bottom 
+            {
+                padding: 60px 11% 0px 0px; 
+                float: right; 
+                font-size:38pt;
+            }
+        </style>
+    </head>
+<body onload="load()">
+<div id="bodyf">hola
+<div id="blok">
+<div id="title">
+        Online Orientation
+        </div>
+        <p id="text">Welcome to our online orientation. We will walk you through some<br>
+of the most essential skills that you will need in your life as a student at<br>
+Los Angeles Trade-Technical College </p>
+
+<div id="img">
+        <div class="imag"><img src="images/SIS1.jpg" height= "117px" /></div>
+            <div class="imag"><img src="images/moodle.jpg" height="117px" /></div>
+            <div class="imag"><img src="images/mahara.jpg" height="117px" /></div>
+</div>
+    <div id="bottom">
+    Continue >>
+    </div>
+</div>
+
+</div>
+</body>
+
+<script>
+
+
+function load()
+{
+  
+  // floating variable for changing opacity
+  var a = 0.0;
+  
+  // wait a second and start animation 
+  setTimeout(function(){animate(a)},1000);
+  
+  // function to animate
+  function animate()
+  {
+    
+    // While picture is not fully visible, increase opacity
+    while (a < 1.1)
+    {
+        // change doc opacity
+        document.getElementById("bodyf").style.opacity = a; 
+        
+        // change counter
+        a = a + 0.1;
+        
+        // step
+        setTimeout(function(){animate()}, 100);
+    }
+    
+    // reset variable
+    a=0;
+    
+    // go to next function to display message board
+    setTimeout(function(){display()}, 1000);
+    }
+  }
+  
+  function display()
+  {
+    document.getElementById("blok").style.display = "block";
+    return;
+  }
+  
+}
+
+
+</script>
+
+
+</html>
+
