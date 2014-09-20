@@ -13,7 +13,7 @@
 
             <?php foreach($data as $row): ?>
             <tr>
-                <td><img src="img/<?= $row['avatar'] ?>" width="20px" height="20px" /></td>
+                <td><img src="img/avatars/<?= $row['avatar'] ?>" width="20px" height="20px" /></td>
                 <td> <strong><?= $row["username"] ?></strong> </td>
                 <td><?= $row["tweet"] ?></td>
             </tr>
@@ -29,4 +29,6 @@
         <input type="submit" value="send" />
     </form>
 </div>
+<a href="change.php">Change avatar</a>
 <a href="logout.php">Log out</a>
+
