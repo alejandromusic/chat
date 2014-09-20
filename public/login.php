@@ -37,8 +37,9 @@
                 // remember that user's now logged in by storing user's ID in session
                 $_SESSION["id"] = $row["id"];
                 
-                // let's remember his username as well
+                // let's remember his username and picture as well
                 $_SESSION["name"] = $row["username"];
+                $_SESSION["pic"] = $row["avatar"];
 
                 // redirect
                 redirect("index.php");

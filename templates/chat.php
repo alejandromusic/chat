@@ -13,7 +13,8 @@
 
             <?php foreach($data as $row): ?>
             <tr>
-                <td><?= $row["username"] ?> says... </td>
+                <td><img src="img/<?= $row['avatar'] ?>" width="20px" height="20px" /></td>
+                <td> <strong><?= $row["username"] ?></strong> </td>
                 <td><?= $row["tweet"] ?></td>
             </tr>
             <?php endforeach ?>
