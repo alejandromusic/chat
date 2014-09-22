@@ -16,7 +16,7 @@
         }
     }
 
-    $data = query("SELECT users.username, users.avatar, tweets.tweet FROM users, tweets WHERE tweets.userId = users.id");
+    $data = query("SELECT users.username, users.avatar, tweets.id, tweets.tweet FROM users, tweets WHERE tweets.userId = users.id");
     render(["chat"], ["data" => $data]);
     
     
