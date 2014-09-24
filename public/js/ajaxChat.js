@@ -24,6 +24,10 @@ function request(a) {
 
 
 function time() {
+    // scroll to last message
+    var chat = document.getElementById('chat');
+    chat.scrollTop = chat.scrollHeight;
+    
     // get value of last id on page from the idC class
     tweets = document.getElementsByClassName("idC");
     y = tweets.length;

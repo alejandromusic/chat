@@ -28,23 +28,28 @@
         // retrieve data
         $data = query("SELECT users.username, users.avatar, tweets.id, tweets.tweet FROM users, tweets WHERE tweets.userId = users.id AND tweets.id = ?", $q); ?>
         
-        <table>
-
         <?php foreach($data as $row): ?>
-            <tr>
-                <td>
-                    <input type="hidden" class="idC" value="<?= $row['id'] ?>" />
-                    <img src="img/avatars/<?= htmlspecialchars($row['avatar']) ?>" width="40px" height="40px" />
-                </td>
-                <td> <strong><?= htmlspecialchars($row["username"]) ?></strong> </td>
-                <td><?= htmlspecialchars($row["tweet"]) ?></td>
-            </tr>
-        <?php endforeach ?>
-
-        </table>
-    
-    <?php
-        } while(!empty($data));    
-    }
+            <?php if ($row['id'] == $_SESSION['id']): ?>
+                <div class="panel panel-success">
+            <?php else: ?>
+                <div class="panel panel-info">
+            <?php endif ?>
+                    <div class="panel-heading">
+                        <input type="hidden" class="idC" value="<?= $row['id'] ?>" />
+                        <h3 class="panel-title">
+                            <img src="img/avatars/<?= htmlspecialchars($row['avatar']) ?>" width="40px" height="40px" />
+                            <?= htmlspecialchars($row["username"]) ?>
+                        </h3>
+                    </div>
+            
+                    <div class="panel-body">    
+                        <?= htmlspecialchars($row["tweet"]) ?></td>
+                    </div>
+            
+                </div><!-- end of panel-->
+<?php 
+            endforeach; 
+        } while(!empty($data)); // end do while    
+    } // end else
     
 ?>

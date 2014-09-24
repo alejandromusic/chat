@@ -1,7 +1,6 @@
 body
 {
   font-family: Century Gothic, "Century Gothic", Apple Gothic;
-  min-width:683px;
 }
 #nav {
   background: #446688;
@@ -76,7 +75,7 @@ form
 }
 #chat
 {
-    height:200px;
+    height: 400px;
     overflow: scroll;
     border: solid 3px grey;
 }

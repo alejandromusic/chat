@@ -25,8 +25,10 @@
     // get highest tweet
     $maxId = query("SELECT MAX(id) FROM tweets");
     
+    // convert array in variable
     $maxId = $maxId[0]["MAX(id)"];
     
+    // get last 30 tweets
     $data = query("SELECT users.username, users.avatar, tweets.id, tweets.tweet FROM users, tweets WHERE tweets.userId = users.id AND tweets.id > ? ORDER BY tweets.id ASC", $maxId - 30);
     
     // use chat template for form

@@ -1,7 +1,8 @@
 <?php
     /**
      * ajax.php public
-     * makes an ahax request to ajaxRequest.php
+     * makes an ajax request to ajaxRequest.php
+     * Developed for testing purposes
      * By Alex Reyes
      **/
 
