@@ -11,7 +11,7 @@
      if ($_SERVER["REQUEST_METHOD"] == "POST")
      {
         // sanitize input
-        $username = ($_POST["username"]);
+        $username = strtolower($_POST["username"]);
         $password = ($_POST["password"]);
         $confirm =  ($_POST["confirm"]);
         
@@ -33,7 +33,7 @@
         else
         {
             // insert data in db
-            $ins = query("INSERT INTO users (username, password) VALUES (?, ?)", $_POST["username"], $_POST["password"]);
+            $ins = query("INSERT INTO users (username, password) VALUES (?, ?)", strtolower($_POST["username"]), $_POST["password"]);
 
             // check if successful
             if ($ins === false)
@@ -58,7 +58,7 @@
                 
                 // remember user id and name
                 $_SESSION["id"] = $row["id"];
-                $_SESSION["name"] = $_POST["username"];
+                $_SESSION["name"] = strtolower($_POST["username"]);
 
                 // go to main page
                 redirect("index.php");

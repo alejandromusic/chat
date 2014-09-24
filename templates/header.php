@@ -2,7 +2,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/styles.css" rel="stylesheet"/>
-    <script src="js/news.js" type="text/javascript"></script>
+    <!--news <script src="js/news.js" type="text/javascript"></script>-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     
     <?php if (isset($title)): ?>

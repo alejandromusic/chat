@@ -11,16 +11,22 @@
     $q = intval($_GET['q']);
      
     // check if there are new tweets
-     
-     
     $test = query("SELECT id FROM tweets WHERE id = ?", $q + 1);
+    
+    // if so return error
     if (empty($test))
     {
         echo 'false';
     }
+
+    // if there are new tweets
     else
     {
-        $data = query("SELECT users.username, users.avatar, tweets.id, tweets.tweet FROM users, tweets WHERE tweets.userId = users.id AND tweets.id = ?", $q + 1); ?>
+        do
+        {
+        $q++;
+        // retrieve data
+        $data = query("SELECT users.username, users.avatar, tweets.id, tweets.tweet FROM users, tweets WHERE tweets.userId = users.id AND tweets.id = ?", $q); ?>
         
         <table>
 
@@ -28,7 +34,7 @@
             <tr>
                 <td>
                     <input type="hidden" class="idC" value="<?= $row['id'] ?>" />
-                    <img src="img/avatars/<?= htmlspecialchars($row['avatar']) ?>" width="20px" height="20px" />
+                    <img src="img/avatars/<?= htmlspecialchars($row['avatar']) ?>" width="40px" height="40px" />
                 </td>
                 <td> <strong><?= htmlspecialchars($row["username"]) ?></strong> </td>
                 <td><?= htmlspecialchars($row["tweet"]) ?></td>
@@ -38,6 +44,7 @@
         </table>
     
     <?php
+        } while(!empty($data));    
     }
     
 ?>

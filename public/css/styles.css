@@ -74,3 +74,13 @@ form
   padding:25px;
   float: right;
 }
+#chat
+{
+    height:200px;
+    overflow: scroll;
+    border: solid 3px grey;
+}
+#options
+{
+    margin:45px;
+}
