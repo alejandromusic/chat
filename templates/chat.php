@@ -40,10 +40,9 @@
         </div> <!-- end chat div-->
 
     <div>
-        <form action="index.php" method="post" onsubmit="tweet(); return false;">
-            <input name="tweet" placeholder="type here..." size="35" autofocus />
-            <button type="submit" class="btn btn-primary">Send</button>
-        </form>
+        
+            <input id="tex" placeholder="type here..." onkeypress="send(event)" size="35" autofocus />
+            <button id="sendB" onclick="tw()">button</button>
     </div>
 
 </div><!-- end row -->

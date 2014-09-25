@@ -6,7 +6,7 @@
      * by Alex Reyes
      **/
 
-     include("../include/helpers.php");
+    include("../include/helpers.php");
 
     $q = intval($_GET['q']);
      
@@ -24,9 +24,10 @@
     {
         do
         {
-        $q++;
-        // retrieve data
-        $data = query("SELECT users.username, users.avatar, tweets.id, tweets.tweet FROM users, tweets WHERE tweets.userId = users.id AND tweets.id = ?", $q); ?>
+            $q++;
+            
+            // retrieve data
+            $data = query("SELECT users.username, users.avatar, tweets.id, tweets.tweet FROM users, tweets WHERE tweets.userId = users.id AND tweets.id = ?", $q); ?>
         
         <?php foreach($data as $row): ?>
             <?php if ($row['id'] == $_SESSION['id']): ?>
@@ -43,7 +44,7 @@
                     </div>
             
                     <div class="panel-body">    
-                        <?= htmlspecialchars($row["tweet"]) ?></td>
+                        <?= htmlspecialchars($row["tweet"]) ?>
                     </div>
             
                 </div><!-- end of panel-->

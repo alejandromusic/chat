@@ -1,72 +1,59 @@
 <?php
-    /**
+    /*
      * ajax.php public
-     * makes an ajax request to ajaxRequest.php
-     * Developed for testing purposes
-     * By Alex Reyes
+     * inserts tweet in DB
+     * from the DB
+     * by Alex Reyes
      **/
 
-    require("../include/helpers.php");
-    $data = query("SELECT users.username, users.avatar, tweets.id, tweets.tweet FROM users, tweets WHERE tweets.userId = users.id");
+    include("../include/helpers.php");
 
-    if ($data === false)
+    $t = $_GET['t'];
+     
+    // check if there is a valid session open
+    if (!isset($_SESSION['id']))
     {
-        apologize("Error accessing database");
-        exit;
+        echo 'false';
     }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-<script>
-
-function request(a) {
-    // make ajax request
-    xmlhttp = new XMLHttpRequest();
     
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            if (xmlhttp.responseText == "false")
-            {
-                //alert("empty");
-            }
-            else
-            {
-                document.getElementById("here").innerHTML = document.getElementById("here").innerHTML + xmlhttp.responseText;
-                //alert("q is " + a + " return is "+xmlhttp.responseText);
-            }
-            setTimeout(function(){time()}, 3000);
-        }
+    // insert tweet in db
+    $test = query("INSERT INTO tweets (userId, tweet) VALUES (?, ?)", $_SESSION['id'], $t);
+    
+    // if error
+    if ($test === false)
+    {
+        echo 'false';
     }
-    xmlhttp.open("GET", "ajaxRequest.php?q=" + a, true);
-    xmlhttp.send();
-}
-
-
-function time() {
-    // get value of last id on page from the idC class
-    tweets = document.getElementsByClassName("idC");
-    y = tweets.length;
-
-    request(tweets[y - 1].value);
-}
-
-</script>
-
-</head>
-<body onload="time()">
-        <table border='1'>
-        <?php foreach ($data as $row): ?>
-            <tr>
-                <td>
-                    <input type="hidden" class="idC" value="<?= $row['id'] ?>" />
-                    <img src="img/avatars/<?= htmlspecialchars($row['avatar']) ?>" width="20px" height="20px" /></td>
-                <td> <strong><?= htmlspecialchars($row["username"]) ?></strong> </td>
-                <td><?= htmlspecialchars($row["tweet"]) ?> </td>                                                    </tr>
-
-        <?php endforeach ?>
-        </table>
-
-        <div id="here"></div>
-</body>
-</html>
+    // if able to input in database
+    else
+    {   // get highest tweet (presumably the one we just entered)
+        $maxId = query("SELECT MAX(id) FROM tweets");
+    
+        // convert array in variable
+        $maxId = $maxId[0]["MAX(id)"];
+        
+        // get tweet's info from the database
+        $dat = query("SELECT users.username, users.avatar, tweets.id, tweets.tweet FROM users, tweets WHERE tweets.userId = users.id AND tweets.id = ?", $maxId);
+        $row = $dat[0];
+        // add node
+        ?>
+                <div class="panel panel-success">
+          
+                    <div class="panel-heading">
+                        <input type="hidden" class="idC" value="<?= $row['id'] ?>" />
+                        <h3 class="panel-title">
+                            <img src="img/avatars/<?= htmlspecialchars($row['avatar']) ?>" width="40px" height="40px" />
+                            <?= htmlspecialchars($row["username"]) ?>
+                        </h3>
+                    </div>
+            
+                    <div class="panel-body">    
+                        <?= htmlspecialchars($row["tweet"]) ?>
+                    </div>
+            
+                </div><!-- end of panel-->
+        <?php
+        
+    } // end else
+    
+?>

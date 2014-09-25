@@ -1,3 +1,5 @@
+
+// print new new tweets when they arrive
 function request(a) {
     // make ajax request
     xmlhttp = new XMLHttpRequest();
@@ -10,8 +12,16 @@ function request(a) {
             }
             else
             {
-                document.getElementById("here").innerHTML = document.getElementById("here").innerHTML + xmlhttp.responseText;
-                //alert("q is " + a + " return is "+xmlhttp.responseText);
+                document.getElementById("here").innerHTML = xmlhttp.responseText;
+                
+                // append node
+                var node=document.getElementById("here").firstChild;
+                for (var i = 0; i < 4; i++)
+                {
+                    document.getElementById("chat").appendChild(node);
+                    node=document.getElementById("here").firstChild;
+                }
+                
                 var chatDiv = document.getElementById('chat');
                 chat.scrollTop = chat.scrollHeight;
             }
@@ -24,10 +34,6 @@ function request(a) {
 
 
 function time() {
-    // scroll to last message
-    var chat = document.getElementById('chat');
-    chat.scrollTop = chat.scrollHeight;
-    
     // get value of last id on page from the idC class
     tweets = document.getElementsByClassName("idC");
     y = tweets.length;
@@ -36,23 +42,55 @@ function time() {
 }
 
 /**send tweet needs revision **/
-function tweet() {
+function tw() {
+    
+    // store tweet in var
+    var tweet = document.getElementById("tex").value;
+
     // make ajax request
     xmlhttp = new XMLHttpRequest();
     
+    // when getting a response
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            // input the data in the docuemnt
-            document.getElementById("here").innerHTML = document.getElementById("here").innerHTML + xmlhttp.responseText;
-            //alert("q is " + a + " return is "+xmlhttp.responseText);
+            
+            // if ajax gives us error
+            if (xmlhttp.responseText == "false") {
+                //alert("empty");
+            }
+            
+            // if response from ajax
+            else {  
+ 
+                // add response to doc
+                document.getElementById("here").innerHTML = xmlhttp.responseText;
                 
-            // relocate the scrolling bar
-            var chatDiv = document.getElementById('chat');
-            chat.scrollTop = chat.scrollHeight;
+                // append node
+                var node=document.getElementById("here").firstChild;
+                for (var i = 0; i < 4; i++)
+                {
+                    document.getElementById("chat").appendChild(node);
+                    node=document.getElementById("here").firstChild;
+                }
+                
+                // relocate the scrolling bar
+                var chatDiv = document.getElementById('chat');
+                chat.scrollTop = chat.scrollHeight;
+            }
         }
     }
-    xmlhttp.open("GET", "ajaxRequest.php?q=" + a, true);
+    xmlhttp.open("GET", "ajax.php?t=" + tweet, true);
     xmlhttp.send();
+}
+
+function send(e)
+{
+    // if enter key pressed
+    if (e.keyCode == 13)
+        {            
+            document.getElementById('sendB').click();
+            document.getElementById("tex").value="";
+        }
 }
 
 window.onload=function(){time()};
