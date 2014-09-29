@@ -13,7 +13,7 @@
     // check if there are new tweets
     $test = query("SELECT id FROM tweets WHERE id = ?", $q + 1);
     
-    // if so return error
+    // if no return error
     if (empty($test))
     {
         echo 'false';
