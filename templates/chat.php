@@ -1,17 +1,27 @@
 <?php
     /**
      * chat.php template
+     * controlled by index.php
+     * By Alex Reyes
      **/
 ?>
 
-<div class="page-header">
-    <h1>Welcome <?= $_SESSION["name"] ?></h1>
-</div>
-
 <div class="row">
-    <div class="col-sm-4">
-        <div id="chat" class="well">
+    <div class="col-md-2">
+        <h4>Welcome <?= $_SESSION["name"] ?></h4>
+        <img src="img/avatars/<?= htmlspecialchars($image) ?>" width="200px"  />
+        <a href="change.php">Change avatar</a><br/>
+        <a href="logout.php">Log out</a>
+    </div>
 
+    <div class="col-md-8">
+
+        <div>
+            <input id="tex" class="form-control" placeholder="type here..." onkeypress="send(event)" size="35" autofocus />
+            <button id="sendB" >Post</button>
+        </div>
+
+        <div id="posts">
             <?php foreach($data as $row): ?>
                 <?php if (strcmp($row['username'], $_SESSION['name']) === 0): ?>
                     <div class="panel panel-success">
@@ -36,27 +46,24 @@
 
             <div id="here">
             </div>
-        
-        </div> <!-- end chat div-->
+        </div>
 
-    <div>
-        
-            <input id="tex" placeholder="type here..." onkeypress="send(event)" size="35" autofocus />
-            <button id="sendB" onclick="tw()">button</button>
+
+    </div><!--end col -->
+
+    <div class="col-md-2">
+       <h4>List of participants</h4>
+       <table class="table table-hover" id="participants">
+        <?php foreach ($users as $row): ?>
+            <tr>
+                <td><?= $row["username"] ?></td>
+            </tr>
+        <?php endforeach ?>
+        </table>
     </div>
 
 </div><!-- end row -->
 
-<div id="options">
-    <a href="change.php">Change avatar</a><br/>
-    <a href="logout.php">Log out</a>
-</div>
-
 
 <!-- ajax script -->
-<script src="js/ajaxChat.js"></script>
-<script>
-    // scroll to last message
-    var chat = document.getElementById('chat');
-    chat.scrollTop = chat.scrollHeight;
-</script>
+<script src="js/ajaxChat2.js"></script>

@@ -1,8 +1,15 @@
 <h1>Login</h1>
-<form action="login.php" method="post">
-    username: <input type="text" name="username" placeholder="john" autofocus />
-    password: <input name="password" type="password" />
-    <input type="submit" value="login"/>
+ 
+<form role="form" method="post">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-default" value="Login">Login</button>
 </form>
 
 <div>

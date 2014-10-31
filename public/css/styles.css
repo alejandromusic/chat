@@ -76,7 +76,7 @@ form
 }
 #chat
 {
-    height: 400px;
+    height: 300px;
     overflow: scroll;
     border: solid 3px grey;
 }

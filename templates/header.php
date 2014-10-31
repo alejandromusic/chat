@@ -14,10 +14,10 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/css/bootstrap-theme.min.css" rel="stylesheet"/>
     <!--news <script src="js/news.js" type="text/javascript"></script>-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/css/jquery-1.11.1.min.js"></script>
     
     <?php if (isset($title)): ?>
-        <title>Welcome: <?= ($title) ?></title>
+        <title><?= ($title) ?></title>
     <?php else: ?>
         <title>Welcome to school</title>
     <?php endif ?>
@@ -31,7 +31,6 @@
   </head>
 
 <body role="document">
-    
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -42,13 +41,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Main Page</a>
+          <a class="navbar-brand" href="/">Main Page</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="http://alejandromusic.org/map.php" target="_new">Map</a></li>
-            <li><a href="http://alejandromusic.org/orientation" target="_new">Tutorials</a></li>
+            <?= $active[0] ?><a href="index.php">Home</a></li>
+            <?= $active[1] ?><a href="edplan.php">Ed Planner</a></li>
+            <?= $active[2] ?><a href="http://alejandromusic.org/map.php" target="_blank">Map</a></li>
+            <?= $active[3] ?><a href="http://alejandromusic.org/orientation" target="_blank">Tutorials</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

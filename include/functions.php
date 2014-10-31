@@ -91,7 +91,10 @@
         // extract variables into local scope
         extract($values);
 
-        // render header
+        // render header controller
+        require("../include/header.php");
+
+        // render header template
         require("../templates/header.php");
         
         // if template exists, render it
