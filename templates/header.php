@@ -52,8 +52,9 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="tutoring.php">Tutoring</a></li>
-                <li><a href="help.php">Find Help</a></li>
+                <li><a href="webgl.php">3D Objects</a></li>
+                <li><a href="webgl2.php">3D Transmission</a></li>
+                <li><a href="cgi.php">Context/Projections</a></li>
               </ul>
             </li>
           </ul>

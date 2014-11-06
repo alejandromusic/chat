@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-2">
         <h4>Welcome <?= $_SESSION["name"] ?></h4>
-        <img src="img/avatars/<?= htmlspecialchars($image) ?>" width="200px"  />
+        <img src="img/avatars/<?= htmlspecialchars($_SESSION['pic']) ?>" width="200px"  />
         <a href="change.php">Change avatar</a><br/>
         <a href="logout.php">Log out</a>
     </div>
@@ -67,3 +67,4 @@
 
 <!-- ajax script -->
 <script src="js/ajaxChat2.js"></script>
+
