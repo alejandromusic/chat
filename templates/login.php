@@ -44,7 +44,7 @@ They follow the standard of the MVC paradigm of modern industry
         needed for every major.</p>
         <p>This was done using Javascript, php, and mysql.</p></li>
 
-        <li><a href="webgl.php">WebGL</a>
+        <li><a href="torque.php">WebGL</a>
         <p>This is what I am currently developing. The context of the project 
         is explained in cgi.php. It consists in developing 3D models of
         pieces and machines and allow users to manipulate them either by
